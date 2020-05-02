@@ -1,0 +1,176 @@
+/*
+  Theme Name: La Pizzeria
+  Theme URI:
+  Author: Talavera S
+  Description: Theme designed for Pizzeria
+  Version: 1.0.0
+  License: GNU General Public License v2 or later
+  License URI: hhtp://www.gnu.org/licenses/gpl-2.0.hmtl
+  Tags: CSS Grid, Flexbox, Pizzeria, Mobile First
+  Text Domain: lapizzeria
+
+*/
+:root{
+
+  /*Fonts*/
+  --primaryFont: 'Open Sans', sans-serif;
+  --headingsFont: 'Raleway', sans-serif;
+
+  /*Colors*/
+  --red: #a61206;
+  --orange: #f19f30;
+  --green: #127427;
+  --white: #fff;
+  --black: #000;
+  --lightGray: #c1c1c1;
+
+  /*Layout*/
+  --container:120rem;
+}
+
+html{
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+*, *:before, *:after{
+  box-sizing: inherit;
+}
+body{
+  font-family: var(--primaryFont);
+  font-size:1.6rem;
+  line-height: 1.8;
+}
+p{
+  font-size: 1.8rem;
+  line-height: 5rem;
+}
+h1, h2, h3,h4,h5,h6{
+  font-family: var(--headingsFont);
+  font-weight: 900;
+}
+h1{
+  font-size: 4.5rem;
+}
+h2{
+  font-size: 4rem;
+}
+h3{
+  font-size: 3rem;
+}
+h4{
+  font-size: 2.8rem;
+}
+
+/*Utilidades*/
+.txt_center{
+  text-align:center;
+}
+
+/*Globales*/
+a{
+  text-decoration: none;
+}
+ul{
+  padding:0;
+  margin:0;
+  list-style: none;
+}
+.container{
+  width: 95%;
+  max-width: var(--container);
+  margin:0 auto;
+}
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+/*Header*/
+.site-header{
+  padding-top:3rem;
+}
+ @media (min-width: 768px) {
+  .site-header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .logo{
+    grid-column: 2/3;
+  }
+}
+.logo a{
+  display: flex;
+  justify-content: center;
+}
+.logo img{
+  width:80%;
+  max-width: 25rem;
+}
+ @media (min-width: 768px) {
+  .information-header{
+    grid-column: 2/3;
+  }
+}
+.direction{
+  padding:1rem 2rem;
+}
+.direction p{
+  text-align: center;
+  margin:0;
+}
+ @media (min-width: 768px) {
+  .direction p{
+    text-align: right;
+    line-height: 1.5;
+  }
+}
+/*Menu*/
+.main-menu{
+  display: none;
+}
+ @media (min-width: 768px) {
+   .main-menu{
+     border-top: 1px solid var(--lightGray);
+     margin-top:3rem;
+     display: block;
+   }
+}
+/*Menu Escritorio*/
+ @media (min-width: 768px) {
+  .slicknav_menu{
+    display: none;
+  }
+
+  .site-menu .menu{
+     display: flex;
+     justify-content: space-between;
+  }
+  .site-menu .menu li{
+    flex:1;
+    justify-content: center;
+  }
+  .site-menu .menu a{
+    font-family: var(--headingsFont);
+    text-transform: uppercase;
+    color:var(--black);
+    padding:1rem;
+    display: block;
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: center;
+  }
+  .site-menu .menu li:hover{
+    background-color:var(--orange);
+    width: 100%;
+    transition: 0.5s linear;
+  }
+  .site-menu .menu li:hover a{
+    color:var(--white);
+    transition:0.2s ease;
+  }
+  .site-menu .menu li.current_page_item a{
+    border-bottom:0.5rem solid var(--red);
+  }
+}
+
+/*Menu Mobile*/
