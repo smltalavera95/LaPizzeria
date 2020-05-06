@@ -18,7 +18,16 @@
 
         <div class="information-header">
           <div class="social-media">
-
+            <?php
+              $args = array(
+                'theme_location' => 'socialMedia-menu',
+                'container' => 'nav',
+                'container_class' => 'socials',
+                'link_before' => '<span class="sr-text">',//Para agregar una etiqueta antes del texto
+                'link_after' => '</span>'
+              );
+              wp_nav_menu($args);
+            ?>
           </div><!--SM end-->
 
           <div class="direction">

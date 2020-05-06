@@ -9,11 +9,13 @@ function lp_styles(){
   //Fonts
   wp_enqueue_style('googleFonts', 'https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@400;700;900&display=swap',  array(), '1.0.0');
 
+  //Adding CSS Slick Nav
+  wp_enqueue_style('slickNav', 'https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/slicknav.min.css', array('normalize'), '1.0.10');
+
   //Adding CSS Stylesheets
   wp_enqueue_style('style' , get_stylesheet_uri(), array('normalize'), '1.0.0');
 
-  //Adding CSS Slick Nav
-  wp_enqueue_style('slickNav', 'https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/slicknav.min.css', array('normalize'), '1.0.10');
+
 
   //Scripts
   //SlickNav
@@ -31,7 +33,8 @@ function lp_menus(){
   register_nav_menus(array(
     /*header-menu es para el backend
     Header Menu es el nombre que aparece en la parte visual del admin*/
-    'header-menu' => 'Header Menu'
+    'header-menu' => 'Header Menu',
+    'socialMedia-menu' => 'Social Media Menu'
   ) );
 }
 add_action('init', 'lp_menus');
