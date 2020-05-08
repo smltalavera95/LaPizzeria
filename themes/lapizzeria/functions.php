@@ -1,8 +1,14 @@
 <?php
 
-//Habilitar imagenes destacadas
+
 function lp_setup(){
+  //Enable featured image
   add_theme_support('post-thumbnails');
+
+  //Sizes of images
+  add_image_size( 'us', 437, 291, true );
+  add_image_size( 'specialty', 768, 515, true );
+  add_image_size( 'specialty_portrait', 435, 526, true );
 }
 add_action('after_setup_theme', 'lp_setup');
 
