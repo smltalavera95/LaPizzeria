@@ -1,5 +1,11 @@
 <?php
 
+//Habilitar imagenes destacadas
+function lp_setup(){
+  add_theme_support('post-thumbnails');
+}
+add_action('after_setup_theme', 'lp_setup');
+
 /** CSS y JS **/
 function lp_styles(){
 

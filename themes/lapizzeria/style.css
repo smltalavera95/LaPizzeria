@@ -61,10 +61,6 @@ h4{
   font-size: 2.8rem;
 }
 
-/*Utilidades*/
-.txt_center{
-  text-align:center;
-}
 
 /*Globales*/
 a{
@@ -83,6 +79,22 @@ ul{
 img{
   max-width: 100%;
   height: auto;
+}
+
+/*Utilidades*/
+.txt_center{
+  text-align:center;
+}
+.section{
+  padding:1rem;
+}
+ @media (min-width: 768px) {
+  .section{
+    position: relative;
+    margin-top:-90px;
+    background-color:var(--white);
+    padding:6rem;
+  }
 }
 
 /*Header*/
@@ -283,4 +295,33 @@ img{
 .site-footer .direction p{
   text-align: center;
   font-size: 1.6rem;
+}
+
+/*Template paginas*/
+.hero{
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: 0 auto;
+  height: 45rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+/** Making darker the hero image**/
+.hero::after{
+  position:absolute;
+  background-color:rgba(0,0,0,0.6);
+  top:0;
+  left:0;
+  width:100%;
+  height: 100%;
+  content:'';
+}
+.hero h1{
+  color:#fff;
+  position:relative;
+  z-index: 1;
 }
