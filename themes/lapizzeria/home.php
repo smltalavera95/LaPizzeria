@@ -12,12 +12,50 @@
   </div>
 </div>
 
-<div class="section container">
-  <main class="primary-content">
+<div class="section container with-sidebar">
+  <main class="primary-content ">
     <?php while(have_posts()): the_post(); ?>
-      <h1><?php the_title();?></h1>
+      <article class="blog-post">
+        <a href="<?php the_permalink();?>">
+          <?php the_post_thumbnail( 'specialty');?>
+        </a>
+
+        <header class="post-information">
+          <div class="date">
+            <time>
+              <?php echo the_time('d');?>
+              <span class="month"><?php echo the_time('M');?></span>
+            </time>
+          </div>
+
+          <div class="post-title">
+            <a href="<?php the_permalink();?>">
+              <h2><?php the_title();?></h2>
+            </a>
+          </div>
+        </header>
+        <p class="author">
+          Written by:
+          <span><?php the_author();?></span>
+        </p>
+
+        <div class="post-content">
+          <?php the_excerpt();?>
+          <a href="<?php the_permalink();?>" class="btn btn-primary">Read more</a>
+        </div>
+
+      </article>
+
     <?php endwhile;?>
+    <div class="pagination">
+      <?php echo next_posts_link('Older');?>
+      <?php echo previous_posts_link('Newer');?>
+    </div>
+
+
   </main>
+  <?php get_sidebar();?>
+
 </div>
 
 

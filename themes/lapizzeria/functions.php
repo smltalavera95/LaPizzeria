@@ -50,3 +50,11 @@ function lp_menus(){
   ) );
 }
 add_action('init', 'lp_menus');
+
+
+/* Pagination Buttons */
+function lp_pagination_buttons(){
+  return 'class="btn btn-secondary"';
+}
+add_filter('next_posts_link_attributes', 'lp_pagination_buttons');
+add_filter('previous_posts_link_attributes', 'lp_pagination_buttons');

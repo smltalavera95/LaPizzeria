@@ -97,6 +97,33 @@ img{
   }
 }
 
+/*Buttons*/
+.btn{
+  padding:1rem 3rem;
+  display: block;
+  flex:1;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: var(--headingsFont);
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+}
+ @media (min-width: 768px) {
+  .btn{
+    display: inline-block;
+    flex:0 0 auto;
+  }
+}
+.btn-primary{
+  background-color: var(--orange);
+  color:var(--white);
+}
+.btn-secondary{
+  background-color:var(--red);
+  color:var(--white);
+}
+
 /*Header*/
 .site-header{
   padding-top:3rem;
@@ -324,4 +351,85 @@ img{
   color:#fff;
   position:relative;
   z-index: 1;
+}
+
+/* Blog */
+ @media (min-width: 768px) {
+  .with-sidebar{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 4rem;
+  }
+}
+.blog-post{
+  padding-top:3rem;
+  padding-bottom:4rem;
+  margin-bottom:3rem;
+  border-bottom: 1px solid var(--lightGray);
+}
+.blog-post p{
+  margin:0.5rem 0;
+  line-height: 1.5;
+}
+.blog-post:last-of-type{
+  border-bottom:none;
+}
+.post-information{
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  grid-gap: 2rem;
+  margin-bottom:2rem;
+}
+.post-information .date{
+  background:var(--orange);
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+}
+.post-information time{
+  font-size: 3rem;
+  font-family: var(--headingsFont);
+  font-weight: 700;
+}
+.post-information time span{
+  font-size: 1.6rem;
+  display: block;
+  text-transform: uppercase;
+}
+.post-information h2{
+  margin: 0;
+  line-height: 1.3;
+}
+.post-information a{
+  color:var(--black);
+}
+
+.author{
+  font-family: var(--headingsFont);
+  text-transform: uppercase;
+}
+p.author {
+  margin-bottom:2rem;
+}
+.author span{
+  color:var(--orange);
+  font-size: 2rem;
+  font-weight: 700;
+
+}
+.post-content .btn{
+  margin-top:2rem;
+}
+
+.pagination{
+  display: flex;
+  justify-content: center;
+  margin-bottom:2rem;
+}
+.pagination a:first-of-type{
+  margin-right: 2rem;
 }
