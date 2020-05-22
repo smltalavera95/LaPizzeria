@@ -1,0 +1,17 @@
+{
+  "name": "lapizzeria-gutenberg",
+  "version": "1.0.0",
+  "description": "Add Gutenberg blocks",
+  "main": "index.js",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
+  },
+  "author": "Talavera S",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "^9.1.0",
+    "css-loader": "^3.5.3",
+    "style-loader": "^1.2.1"
+  }
+}

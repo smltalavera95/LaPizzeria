@@ -52,6 +52,20 @@ function lp_menus(){
 add_action('init', 'lp_menus');
 
 
+/*Widgets*/
+function lp_widgets(){
+  register_sidebar(array(
+     'name' => 'Blog Sidebar',
+     'id' => 'blog_sidebar',
+     'before_widget' => '<div class="widget">',
+     'after_widget' => '</div>',
+     'before_title' => '<h3>',
+     'after_title' => '</h3>'
+  ) );
+}
+add_action('widgets_init', 'lp_widgets');
+
+
 /* Pagination Buttons */
 function lp_pagination_buttons(){
   return 'class="btn btn-secondary"';
