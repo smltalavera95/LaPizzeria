@@ -1,0 +1,59 @@
+:root{
+
+  /*Fonts*/
+  --primaryFont: 'Open Sans', sans-serif;
+  --headingsFont: 'Raleway', sans-serif;
+
+  /*Colors*/
+  --red: #a61206;
+  --orange: #f19f30;
+  --green: #127427;
+  --white: #fff;
+  --black: #000;
+  --lightGray: #c1c1c1;
+
+  /*Layout*/
+  --container:120rem;
+}
+
+/*Boxes us*/
+.boxes-us{
+  display: grid;
+}
+ @media (min-width: 768px) {
+  .boxes-us{
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
+.boxes-us .wp-block-column{
+  display: grid;
+  margin:0!important;
+  grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+}
+.wp-block-lp-boxes{
+  height: 24rem;
+  padding:4rem 2rem;
+  display: grid;
+  align-items: center;
+}
+.wp-block-lp-boxes h2{
+  font-size:2rem;
+  line-height: 1;
+  font-weight: 700;
+  margin:0;
+}
+.wp-block-lp-boxes p{
+  line-height: 1.3;
+  font-size: 1.6rem;
+}
+.boxes-us .wp-block-image {
+	margin:0;
+  overflow: hidden;
+  height: 24rem;
+}
+.boxes-us img{
+  display: block;
+  object-fit: cover;
+  height: 30rem;
+  width: 100%;
+}

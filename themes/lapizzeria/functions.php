@@ -5,6 +5,42 @@ function lp_setup(){
   //Enable featured image
   add_theme_support('post-thumbnails');
 
+  //Enable support for default gutunberg styles
+  add_theme_support( 'wp-block-styles' );
+  add_theme_support('editor-styles');
+  //Custom Colors
+  add_theme_support('editor-color-palette', array(
+    array(
+      'name' => 'Red',
+      'slug' =>'red',
+      'color' => '#a61206'
+    ),
+    array(
+      'name' => 'Orange',
+      'slug' => 'orange',
+      'color' => '#F19F30'
+    ),
+    array(
+      'name' => 'Green',
+      'slug' =>'green',
+      'color' => '#127427'
+    ),
+    array(
+      'name' => 'White',
+      'slug' =>'white',
+      'color' => '#ffffff'
+    ),
+    array(
+      'name' => 'Black',
+      'slug' =>'black',
+      'color' => '#000000'
+    )
+
+  ));
+
+  //Disable the hexadecimal Color
+  add_theme_support( 'disable-custom-colors' );
+
   //Sizes of images
   add_image_size( 'us', 437, 291, true );
   add_image_size( 'specialty', 768, 515, true );

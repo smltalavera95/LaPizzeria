@@ -101,7 +101,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var registerBlockType = wp.blocks.registerBlockType; //Import the components
 
-var RichText = wp.editor.RichText; //Logo for the block
+var _wp$editor = wp.editor,
+    RichText = _wp$editor.RichText,
+    InspectorControls = _wp$editor.InspectorControls,
+    ColorPalette = _wp$editor.ColorPalette,
+    BlockControls = _wp$editor.BlockControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar;
+var PanelBody = wp.components.PanelBody; //Logo for the block
 
 
 registerBlockType('lp/boxes', {
@@ -110,20 +116,145 @@ registerBlockType('lp/boxes', {
     src: _pizzeria_icon_svg__WEBPACK_IMPORTED_MODULE_1__["ReactComponent"]
   },
   category: 'lapizzeria',
-  edit: function edit() {
-    //safest place to enter JS code
+  attributes: {
+    headingBox: {
+      type: 'string',
+      source: 'html',
+      selector: ".box h2"
+    },
+    textBox: {
+      type: 'string',
+      source: 'html',
+      selector: ".box p"
+    },
+    bgColor: {
+      type: 'string'
+    },
+    textColor: {
+      type: 'string'
+    },
+    contentAlign: {
+      type: 'string',
+      default: 'center'
+    }
+  },
+  edit: function edit(props) {
+    //Extract the content from props
+    var _props$attributes = props.attributes,
+        headingBox = _props$attributes.headingBox,
+        textBox = _props$attributes.textBox,
+        bgColor = _props$attributes.bgColor,
+        textColor = _props$attributes.textColor,
+        contentAlign = _props$attributes.contentAlign,
+        setAttributes = props.setAttributes; //safest place to enter JS code
     //Function to read the user writes
+
     var onChangeHeadingBox = function onChangeHeadingBox(newHeading) {
-      console.log(newHeading);
+      setAttributes({
+        headingBox: newHeading
+      });
     };
 
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+    var onChangeTextBox = function onChangeTextBox(newText) {
+      setAttributes({
+        textBox: newText
+      });
+    };
+
+    var onChangeBackgroundColor = function onChangeBackgroundColor(newBgColor) {
+      setAttributes({
+        bgColor: newBgColor
+      });
+    };
+
+    var onChangeTextColor = function onChangeTextColor(newTextColor) {
+      setAttributes({
+        textColor: newTextColor
+      });
+    };
+
+    var onChangeContentAlign = function onChangeContentAlign(newAlign) {
+      setAttributes({
+        contentAlign: newAlign
+      });
+    };
+
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+      title: 'Color de Fondo',
+      initialOpen: true
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control__field"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", {
+      className: "components-base-control__label"
+    }, "Color de Fondo"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ColorPalette, {
+      onChange: onChangeBackgroundColor
+    })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+      title: 'Color del texto',
+      initialOpen: false
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "components-base-control__field"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", {
+      className: "components-base-control__label"
+    }, "Color del Texto"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ColorPalette, {
+      onChange: onChangeTextColor,
+      value: textColor
+    }))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(AlignmentToolbar, {
+      onChange: onChangeContentAlign
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "box",
+      style: {
+        backgroundColor: bgColor,
+        textAlign: contentAlign
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
+      style: {
+        color: textColor
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       placeholder: "Add your title",
-      onChange: onChangeHeadingBox
-    })));
+      onChange: onChangeHeadingBox,
+      value: headingBox
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+      style: {
+        color: textColor
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      placeholder: "Add a description",
+      onChange: onChangeTextBox,
+      value: textBox
+    }))));
   },
-  save: function save() {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null);
+  save: function save(props) {
+    //Extract the content from props
+    var _props$attributes2 = props.attributes,
+        headingBox = _props$attributes2.headingBox,
+        textBox = _props$attributes2.textBox,
+        bgColor = _props$attributes2.bgColor,
+        textColor = _props$attributes2.textColor,
+        contentAlign = _props$attributes2.contentAlign;
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "box",
+      style: {
+        backgroundColor: bgColor,
+        textAlign: contentAlign
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
+      style: {
+        color: textColor
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      value: headingBox
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+      style: {
+        color: textColor
+      }
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      value: textBox
+    })));
   }
 });
 

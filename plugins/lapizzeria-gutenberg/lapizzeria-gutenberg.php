@@ -49,7 +49,7 @@ function lp_register_blocks(){
   wp_register_style(
     'lp-editor-style', //unique name
     plugins_url('build/editor.css', __FILE__), //URL file with blocks
-    array('wp-editor-blocks'),//dependencies
+    array('wp-edit-blocks'),//dependencies
     filemtime(plugin_dir_path(__FILE__) . 'build/editor.css')//version
   );
 
