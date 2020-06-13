@@ -75,5 +75,82 @@ function lp_register_blocks(){
     ));
   }
 
+  //Register a dynamic block
+  register_block_type('lp/menu', array(
+    'editor_script' => 'lp-editor-script',//The script that we defined before
+    'editor_style' => 'lp-editor-style',//The style that we defined before
+    'style' => 'lp-frontend-style',//The style frontend that we defined before
+    'render_callback' =>'lp_specialties_front_end'//Database query
+  ));
+
 }
 add_action('init', 'lp_register_blocks');
+
+
+//Request from Database to show data from Frontend
+function lp_specialties_front_end($atts){
+  //echo '<pre>';
+  //var_dump($atts);
+  //echo '</pre>';
+
+  //Extract the data from variables
+  $quantity = $atts['quantityShow'] ? $atts['quantityShow']:-1;
+  $blockTitle = $atts['blockTitle'] ? $atts['blockTitle']: 'Our specialties';
+  $tax_query = array();
+
+  if(isset($atts['categoriesMenu'])){
+    $tax_query[]=array(
+      'taxonomy' =>  'category-menu',
+      'terms' => $atts['categoriesMenu'],
+      'field'=> 'term_id'
+    );
+  }
+  //Get the data from query
+  $specialties = wp_get_recent_posts(array(
+    'post_type' => 'specialties',
+    'post_status' => 'publish',
+    'numberposts' => $quantity,
+    'tax_query' => $tax_query
+  ));
+
+  if(count($specialties)==0){
+    return 'There are not recipe';
+  }
+
+  $body ='';
+  $body .='<h2 class="menu-title">';
+  $body .=$blockTitle;
+  $body .='</h2>';
+  $body .='<ul class="our-menu">';
+  foreach($specialties as $spe):
+    //get the $specialties object
+    $post = get_post($spe['ID']);
+    //Access to the template tags
+    setup_postdata( $post );
+
+    $body .= sprintf(
+      '<li>
+        %1$s
+      <div class="dish">
+        <div class="price-title">
+          <h3>%2$s</h3>
+          <p>$ %3$s</p>
+        </div>
+        <div class="dish-content">
+          <p>
+            %4$s
+          </p>
+        </div>
+      </div>
+      </li>',
+      get_the_post_thumbnail($post, 'specialties'),
+      get_the_title($post),
+      get_field('price', $post),
+      get_the_content( $post )
+    );
+    wp_reset_postdata();
+  endforeach;
+  $body .='</ul>';
+
+  return $body;
+}
