@@ -46,7 +46,9 @@ function lapizzeria_specialties() {
 		'hierarchical'       => false,
 		'menu_position'      => 6,
 		'supports'           => array( 'title', 'editor', 'thumbnail' ),
-		'taxonomies'         =>  array('category-menu')
+		'taxonomies'         =>  array('category-menu'),
+		'show_in_rest' 			 => true, //enable rest api
+		'rest_base'					 => 'specialties-api'//url to get enter the api rest
 	);
 
 	register_post_type( 'specialties', $args );
@@ -86,3 +88,64 @@ function lapizzeria_menu_taxonomy() {
 }
 
 add_action( 'init', 'lapizzeria_menu_taxonomy', 0 );
+
+
+/* Add Answer for API */
+function lp_add_rest_api_fields(){
+
+	register_rest_field(
+			'specialties',//where to add
+			'price',//Name to show in the REST API
+			array(
+				'get_callback' => 'lp_get_price',//get the data
+				'update_callback' => null, //users cannot update content from api
+				'schema' => null
+
+			)
+	);
+	register_rest_field(
+			'specialties',//where to add
+			'category_menu',//Name to show in the REST API
+			array(
+				'get_callback' => 'lp_taxonomy_menu',//get the data
+				'update_callback' => null, //users cannot update content from api
+				'schema' => null
+
+			)
+	);
+	register_rest_field(
+			'specialties',//where to add
+			'featured_image_url',//Name to show in the REST API
+			array(
+				'get_callback' => 'lp_get_image_url',//get the data
+				'update_callback' => null, //users cannot update content from api
+				'schema' => null
+
+			)
+	);
+}
+add_action('rest_api_init', 'lp_add_rest_api_fields');
+
+function lp_get_price(){
+	//if the custom field price doesnt exist
+	if(!function_exists('get_field')){
+		return;
+	}
+	if(get_field('price')){
+		return get_field('price');
+	}
+	return false;
+}
+function lp_taxonomy_menu(){
+	global $post;
+	return get_object_taxonomies($post);
+}
+
+function lp_get_image_url($object, $field_name, $request){
+	//Check if featured media exists
+	if($object['featured_media']){
+		$image = wp_get_attachment_image_src( $object['featured_media'] );
+		return $image[0];
+	}
+	return false;
+}
