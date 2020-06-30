@@ -85,6 +85,9 @@ img{
 .txt_center{
   text-align:center;
 }
+.txt-primary{
+  color:var(--red);
+}
 .section{
   padding:1rem;
 }

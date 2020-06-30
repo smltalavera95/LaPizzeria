@@ -62,11 +62,13 @@ registerBlockType('lp/menu', {
     //Checking the categories
     if(!categories){
       console.log('Loading...');
+      return null;
     }
 
     //If there is not categories
     if(categories && categories.length === 0){
       console.log('Category did not found any results');
+      return null;
     }
 
     categories.forEach( category=>{

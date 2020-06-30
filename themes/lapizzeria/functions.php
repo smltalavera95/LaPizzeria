@@ -5,9 +5,14 @@ function lp_setup(){
   //Enable featured image
   add_theme_support('post-thumbnails');
 
+  //Titles for SEO
+  add_theme_support('title-tag');
   //Enable support for default gutunberg styles
   add_theme_support( 'wp-block-styles' );
   add_theme_support('editor-styles');
+
+  //Wide support
+  add_theme_support('align-wide');
   //Custom Colors
   add_theme_support('editor-color-palette', array(
     array(

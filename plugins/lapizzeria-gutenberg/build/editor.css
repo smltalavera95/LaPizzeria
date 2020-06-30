@@ -9,3 +9,72 @@
   text-align: center;
   padding:4rem 2rem;
 }
+.txt-primary{
+  color:var(--red);
+}
+/*Buttons*/
+.btn{
+  padding:1rem 3rem;
+  display: block;
+  flex:1;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: var(--headingsFont);
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  border:none;
+}
+.btn:hover{
+  cursor:pointer;
+}
+ @media (min-width: 768px) {
+  .btn{
+    display: inline-block;
+    flex:0 0 auto;
+  }
+}
+.btn-primary{
+  background-color: var(--orange);
+  color:var(--white);
+
+}
+.btn-primary:hover,
+.btn-secondary:hover{
+  color:var(--white);
+}
+.btn-secondary{
+  background-color:var(--red);
+  color:var(--white);
+}
+
+.pizzeria-add-image{
+  display: block;
+  margin:0 auto;
+}
+/******** Button for deleting ****/
+.image{
+  position:relative;
+}
+.image .delete-image{
+  position:absolute;
+  right: 1rem;
+  top:1rem;
+  background-color: rgba(0,0,0,0.75);
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.delete-image:hover{
+  cursor:pointer;
+}
+.delete-image .dashicons{
+  color:var(--white);
+}
+
+.hero-block .dashicons-format-image{
+  color:var(--white);
+}

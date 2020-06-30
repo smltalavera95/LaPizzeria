@@ -111,3 +111,110 @@
   text-align: left;
 }
 /************* Fin Bloque Menu **************/
+
+/************** Gallery ********************/
+.gallery-pizzeria .txt-primary{
+  color:var(--red);
+  font-weight: 700;
+}
+ul.list-images{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  list-style: none!important;
+  margin-top:3rem;
+  grid-gap:2rem;
+}
+.image img{
+  display: block;
+  width: 100%;
+}
+
+
+/************* Fin Gallery ****************/
+
+
+/************** Hero BLock ****************/
+.hero-block{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem;
+    background-size: cover;
+
+}
+.hero-block h1,
+.hero-block p{
+  color: var(--white)!important;
+  margin:0.5rem;
+}
+.alignfull {
+  margin: 0 calc(50% - 50vw);
+  max-width: 100vw;
+  width: 100vw;
+}
+.content-hero,
+.ingredients__content{
+  max-width: 1200px;
+  margin:0 auto;
+}
+/*********** End Hero BLock *************/
+
+/**************** IMG and Text ****************/
+.ingredients{
+  background-size: cover;
+  padding: 8rem 2rem;
+}
+.ingredients__text{
+  color:var(--white);
+}
+ @media (min-width: 768px) {
+  .ingredients__content{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2rem;
+  }
+}
+/************* End IMG and Text ***************/
+
+/***************** Block Container ****************/
+.c-block__container{
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+.c-block__content{
+  padding:8rem 0;
+}
+ @media (min-width: 768px) {
+  .c-block__content{
+    min-height: 60rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap:2rem;
+  }
+}
+.c-block__inner{
+   padding:3rem;
+   margin:2rem;
+   background-color: rgba(255,255,255,0.8);
+}
+ @media (min-width: 768px) {
+   .c-blocks__inner{
+     grid-column: 2 /3;
+   }
+}
+
+/***************** End Block Container ***********/
+.wpcf7 p label{
+  font-size:2rem;
+}
+.wpcf7-form-control{
+  padding:2rem;
+  border: 1px solid var(--lightGray);
+  width:100%;
+}
+
+
+/************ Utilities ************************/
+.has-red-color{
+  color:var(--red);
+}

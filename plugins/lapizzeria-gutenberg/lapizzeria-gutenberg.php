@@ -63,7 +63,11 @@ function lp_register_blocks(){
 
   //Bocks arrays
   $blocks =[
-    'lp/boxes' //identificador
+    'lp/boxes', //identificador
+    'lp/gallery',
+    'lp/hero',
+    'lp/textimage',
+    'lp/container'
   ];
 
   //Run the bloks add scripts and Styles
@@ -137,9 +141,7 @@ function lp_specialties_front_end($atts){
           <p>$ %3$s</p>
         </div>
         <div class="dish-content">
-          <p>
-            %4$s
-          </p>
+          <p> %4$s </p>
         </div>
       </div>
       </li>',
@@ -154,3 +156,11 @@ function lp_specialties_front_end($atts){
 
   return $body;
 }
+
+
+/* Register Lightbox */
+function lp_frontend_scripts(){
+  wp_enqueue_style( 'lightbox', 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css', array(), '2.11.1');
+  wp_enqueue_script( 'lightboxJS', 'https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js', array('jquery'), '2.11.1', true);
+}
+add_action('wp_enqueue_scripts', 'lp_frontend_scripts');
